@@ -1,0 +1,64 @@
+
+*{
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+} 
+.chess-wrapper{
+    width: 100%; padding-top: 100px;
+    background: url('../img/pattern.svg') repeat 100% center #26a69a;
+    background-size: 500px; height: 100vh; 
+}
+.chess-inner-wrap{
+    max-width: 600px;
+    margin: 0 auto;
+    border: 15px solid;
+    border-image: url('../img/border.jpg') 22 repeat;
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.3);
+    position: relative; overflow: hidden;
+    animation: chesanimation 5s cubic-bezier(0.88, 2.38, 0.94, 0.77) forwards;
+}
+.chess-list{
+    list-style: none; display: flex;
+    justify-content: flex-start; 
+    flex-wrap: wrap; height: 75px;
+}
+.chess-list li{
+    flex-basis: calc(100% / 8);
+    max-width: calc(100% / 8);
+    background-color: #ffffff;
+    cursor: pointer;
+}
+.chess-list:nth-child(odd) li:nth-child(even){
+    background-color: #000000;
+}
+.chess-list:nth-child(even) li:nth-child(odd){
+    background-color: #000000;
+}
+
+.chess-inner-wrap:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%; height: 100%;
+    background: url('../img/border.jpg');
+    z-index: 9; top: 0; bottom: 0; 
+    animation: chesslayer 1s 1s cubic-bezier(0.88, 2.38, 0.94, 0.77) forwards;
+}
+
+@keyframes chesanimation{
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 100%;
+    }
+}
+
+@keyframes chesslayer{
+    0%{
+        transform: translateY(0%);
+    }
+    100%{
+        transform: translateY(-100%);
+    }
+}
